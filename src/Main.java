@@ -40,6 +40,48 @@ public class Main {
                 nr1 + " / " + nr2 + " = " + divide(nr1, nr2) + "\n" +
                 nr1 + " mod " + nr2 + " = " + remainder(nr1, nr2));
 
+        System.out.print("Degrees Fahrenheit: ");
+
+        float degrees = scan.nextFloat();
+
+        System.out.println(degrees + " Fahrenheit is " + convertFToC(degrees) + " Celsius");
+
+        System.out.print("Inches: ");
+
+        float inches = scan.nextFloat();
+
+        System.out.println(inches + "inches = " + convertInchToM(inches) + " meters");
+
+        System.out.print("Distance in meters: ");
+
+        float distance = scan.nextInt();
+
+        System.out.print("Time (hours, minutes, seconds): ");
+
+        float hours = scan.nextInt();
+
+        float minutes = scan.nextInt();
+
+        float seconds = scan.nextInt();
+
+        float min = convertHoursToMin(hours) + minutes;
+
+        float sec = convertMinToSec(min) + seconds;
+
+        System.out.println("Speed: \n" + speed(distance, sec) + " m/s");
+
+        float d = convertMToKm(distance);
+
+        min = minutes + convertSecToMin(seconds);
+
+        float h = convertMinToHours(min) + hours;
+
+        System.out.println(speed(d, h) + " km/h");
+
+        d = convertMToMiles(distance);
+
+        System.out.println(speed(d, h) + " mi/h");
+
     }
 
     //1.Write a Java program that takes two numbers as input and display the product of two numbers.
@@ -92,5 +134,49 @@ public class Main {
         int div = divide(x, y);
         int prod = product(div, y);
         return subtract(x, prod);
+    }
+
+    //6.Write a Java program to convert temperature from Fahrenheit to Celsius degree, using this formula: C = 5/9 * (F-32)
+
+    public static float convertFToC(float x){
+        return 5f / 9f * (x - 32);
+    }
+
+    //7.Write a Java program that reads a number in inches, converts it to meters. ( one inch is 0.0254 meters)
+
+    public static float convertInchToM(float x){
+        return x * 0.0254f;
+    }
+
+//    8.Write a Java program to takes the user for a distance (in meters)and the time was taken
+//    (as three numbers: hours, minutes, seconds), and display the speed, in meters per second, kilometers
+//    per hour and miles per hour (hint: 1 mile = 1609 meters).
+
+    public static float convertMinToSec(float x){
+        return x * 60f;
+    }
+
+    public static float convertSecToMin(float x){
+        return x / 60f;
+    }
+
+    public static float convertHoursToMin(float x){
+        return x * 60f;
+    }
+
+    public static float convertMinToHours(float x){
+        return x / 60f;
+    }
+
+    public static float convertMToKm(float x){
+        return x * 0.001f;
+    }
+
+    public static float convertMToMiles(float x){
+        return x / 1609f;
+    }
+
+    public static float speed(float d, float t){
+        return d / t;
     }
 }
